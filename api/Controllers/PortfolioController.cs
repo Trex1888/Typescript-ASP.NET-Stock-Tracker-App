@@ -1,32 +1,30 @@
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
+// using System;
+// using System.Collections.Generic;
+// using System.Diagnostics;
+// using System.Linq;
+// using System.Threading.Tasks;
+// using Microsoft.AspNetCore.Mvc;
+// using Microsoft.Extensions.Logging;
 
-namespace api.Controllers
-{
-    [Route("[controller]")]
-    public class PortfolioController : Controller
-    {
-        private readonly ILogger<PortfolioController> _logger;
+// namespace api.Controllers
+// {
+//     [Route("api/portfolio")]
+//     [ApiController]
+//     public class PortfolioController : Controller
+//     {
+//         private readonly ILogger<PortfolioController> _logger;
 
-        public PortfolioController(ILogger<PortfolioController> logger)
-        {
-            _logger = logger;
-        }
+//         public PortfolioController(ILogger<PortfolioController> logger)
+//         {
+//             _logger = logger;
+//         }
 
-        public IActionResult Index()
-        {
-            return View();
-        }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View("Error!");
-        }
-    }
-}
+
+//         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+//         public IActionResult Error()
+//         {
+//             return View("Error!");
+//         }
+//     }
+// }

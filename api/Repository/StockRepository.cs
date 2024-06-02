@@ -8,7 +8,6 @@ using api.Models;
 using Microsoft.EntityFrameworkCore;
 using api.Dtos.Stock;
 
-
 namespace api.Repository
 {
     public class StockRepository : IStockRepository
@@ -45,12 +44,12 @@ namespace api.Repository
 
         public async Task<List<Stock>> GetAllAsync()
         {
-            return await _context.Stocks.ToListAsync();
+            return await _context.Stocks.Include(c => c.Comments).ToListAsync();
         }
 
         public async Task<Stock?> GetByIdAsync(int id)
         {
-            return await _context.Stocks.FindAsync(id);
+            return await _context.Stocks.Include(c => c.Comments).FirstOrDefaultAsync(i => i.Id == id);
         }
 
         public async Task<Stock?> GetBySymbolAsync(string symbol)
@@ -60,7 +59,7 @@ namespace api.Repository
 
         public async Task<bool> StockExists(int id)
         {
-            throw new NotImplementedException();
+            return await _context.Stocks.AnyAsync(s => s.Id == id);
         }
 
         public async Task<Stock?> UpdateAsync(int id, UpdateStockRequestDto stockDto)
